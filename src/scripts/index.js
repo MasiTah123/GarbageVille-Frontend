@@ -5,6 +5,12 @@ import '../styles/scss/main.scss';
 
 import * as bootstrap from 'bootstrap'
 
-const button = document.getElementById('btn-blue');
+import logo from '../public/Logo.png';
 
-button.innerText = "Tombol";
+import main from './main';
+
+// document.getElementById('logo-image').setAttribute('src', logo);
+
+document.getElementById('logo-image').src = logo;
+
+document.addEventListener('DOMContentLoaded', main);
