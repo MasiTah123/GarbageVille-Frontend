@@ -7,7 +7,7 @@ import * as bootstrap from 'bootstrap'
 
 import logo from '../public/Logo.png';
 
-import main from './main';
+import main from './main.js';
 
 // document.getElementById('logo-image').setAttribute('src', logo);
 
