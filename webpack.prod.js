@@ -1,7 +1,8 @@
 const path = require('path');
 const { merge } = require('webpack-merge');
-
+const FixStyleOnlyEntriesPlugin = require('webpack-fix-style-only-entries');
 const common = require('./webpack.common');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = merge(common, {
   mode: 'production',
@@ -48,14 +49,19 @@ module.exports = merge(common, {
           },
         ],
       },
+      {
+        test: /.s?css$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          { loader: 'css-loader', options: { sourceMap: true } },
+        ],
+      },
     ],
   },
-  /*
   plugins: [
-    new WorkboxWebpackPlugin.InjectManifest({
-      swSrc: path.resolve(__dirname, 'src/scripts/sw.js'),
-      swDest: './sw.bundle.js',
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
     }),
+    new FixStyleOnlyEntriesPlugin()
   ],
-  */
 });
